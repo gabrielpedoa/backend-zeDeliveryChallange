@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Partner {
+  id           Int     @id @default(autoincrement())
+  tradingName  String?
+  ownerName    String?
+  document     String  @unique
+  coverageArea Json
+  address      Json
+}
