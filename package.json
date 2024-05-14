@@ -1,0 +1,11 @@
+{
+  "name": "backend-zedeliverychallange",
+  "version": "1.0.0",
+  "description": "zé delivery backend challange",
+  "main": "server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Antunes",
+  "license": "ISC"
+}
