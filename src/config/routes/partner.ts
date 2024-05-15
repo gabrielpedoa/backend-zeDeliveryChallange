@@ -5,5 +5,5 @@ import { loadPartnerByIdController } from "../../controller/loadById";
 
 export default (router: Router) => {
   router.post("/partner/create", expressAdapter(createPartnerController()));
-  router.get("/partner/get/:id", expressAdapter(loadPartnerByIdController()));
+  router.get("/partner/get/:id", expressAdapter(loadPartnerByIdController())); 
 };

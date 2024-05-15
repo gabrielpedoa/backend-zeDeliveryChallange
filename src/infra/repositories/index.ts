@@ -20,10 +20,20 @@ export class PartnerRepository {
     return partner;
   }
 
-  public async loadById(id: string) {
+  public async loadById(id: number) {
     const partner = await prisma.partner.findFirst({
       where: {
         id: Number(id),
+      },
+    });
+    console.log(partner);
+    return partner;
+  }
+
+  public async loadByDocument(document: string) {
+    const partner = await prisma.partner.findFirst({
+      where: {
+        document: document,
       },
     });
     return partner;

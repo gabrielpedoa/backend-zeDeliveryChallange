@@ -10,6 +10,14 @@ export interface IController<In, Out> {
   handle: (data: In) => Promise<httpResponse<Out>>;
 }
 
+type IError = {
+  error_type: string;
+  error_code: string;
+  error_message: string;
+  error_details: {};
+  status_code: number;
+};
+
 export default <In>(controller: IController<In, unknown>) => {
   return async (req: Request, res: Response) => {
     try {
@@ -20,8 +28,8 @@ export default <In>(controller: IController<In, unknown>) => {
       });
       return res.status(statusCode).json(data);
     } catch (error) {
-      console.log(error);
-      return errorHandler(error as Error)
-    }
+      const formatedError = errorHandler(error);
+      return res.status(error.statusCode).send(formatedError);
+    }/*  */
   };
 };
