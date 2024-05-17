@@ -9,6 +9,10 @@ export class LoadByIdController<In, Out> implements IController<In, unknown> {
 
   public async handle(data: In) {
     const response = await this.loadByIdUseCase.loadById(data);
-    return response;
+    console.log(response)
+    return {
+      status_code: 200,
+      response,
+    };
   }
 }
