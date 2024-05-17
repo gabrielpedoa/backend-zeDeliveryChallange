@@ -2,8 +2,8 @@ export class DefaultHttpException extends Error {
   error_type: string;
   error_code: string;
   error_message: string;
-  error_details = {};
   status_code: number;
+  error_details = {};
 
   constructor(
     message: string,

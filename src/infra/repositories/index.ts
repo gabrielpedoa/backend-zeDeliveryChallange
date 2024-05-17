@@ -26,7 +26,6 @@ export class PartnerRepository {
         id: Number(id),
       },
     });
-    console.log(partner);
     return partner;
   }
 

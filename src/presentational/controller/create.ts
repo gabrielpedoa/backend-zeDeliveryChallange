@@ -1,5 +1,5 @@
+import { PayloadException } from "../../config/exceptions/errors/payload";
 import { IController } from "../../config/utils/expressAdapter";
-import { BadRequest, Created } from "../helpers/httpResponse";
 import { ISchemaValidator } from "../helpers/schemaValidator";
 
 export interface ICreateUseCase<In, Out> {
@@ -14,8 +14,8 @@ export class CreateController<In, Out> implements IController<In, unknown> {
 
   public async handle(data: In) {
     const validation = this.schemaValidator.isValid(data);
-    if (validation) return BadRequest(validation);
+    if (validation) return validation
     const response = await this.createUseCase.create(data);
-    return Created(response);
+    return response;
   }
 }
