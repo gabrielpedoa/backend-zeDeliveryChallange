@@ -4,15 +4,15 @@ export interface IController<In, Out> {
   handle: (data: In) => Promise<Out>;
 }
 
-export default <In>(controller: IController<In, { status_code: number }>) => {
+export default <In>(controller: IController<any, any>) => {
   return async (req: Request, res: Response) => {
     try {
-      const data = await controller.handle({
+      const { status_code, ...data } = await controller.handle({
         ...req.body,
         ...req.params,
         ...req.query,
       });
-      return res.status(data.status_code).json(data);
+      return res.status(status_code).json(data.response);
     } catch (error) {
       const err = error as { status_code: number; message: string };
       return res.status(err.status_code).send(err);
